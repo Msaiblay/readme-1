@@ -1,0 +1,123 @@
+MVC
+====
+
+Model
+-------
+	-	readme >> app >> Models
+
+
+View
+------
+	-	readme >> resources >> views
+
+
+Controller
+-----------
+	-	readme >> app >> Http >> Controllers
+
+Route
+------
+	-	readme >> routes >> web.php
+
+----------------------------------------------------------------------------------------------------
+
+Routing
+=========
+
+GET method
+-----------
+	Route::get();
+
+POST method
+------------
+	Route::post()
+
+all method (get, post, put, patch, delete, options)
+-----------
+	Route::resource()
+
+----------------------------------------------------------------------------------------------------
+
+1. Create Laravel Project in htdocs
+	composer create-project laravel/laravel readme
+
+2.  readme project folder အောက်ထဲ၀င်မယ်
+	cd readme
+
+3. check laravel framework versioon
+	php artisan --version
+
+4. Run Laravel Project in command line
+	php artisan serve
+
+5. Run laravel project in borwser
+	localhost:8000
+
+6. Install Package in command line
+	->	composer require laravel/jetstream
+	->	php artisan jetstream:install livewire
+	->	php artisan jetstream:install inertia
+	-> 	npm install
+	-> 	npm run dev
+
+7. Name your database in project folder
+	readme >> .env
+		-> DB_DATABASE | DB_USERNAME | DB_PASSWORD
+
+8. Define String Length
+	readme >> app >> Providers >> AppServiceProvider.php
+
+9. Create Table in command line
+	php artisan migrate
+
+10. Create Controller in command line
+		php artisan make:controller GenreController -r
+
+11. Define Route
+		readme >> routes >> web.php
+		-> use App\Http\Controllers\GenreController;
+		-> Route::resource('/genre',GenreController::class);
+
+12. Template Cut
+		->	create components folder in views
+			readme >> resources >> views
+
+		->	create backend.blade.php in components folder
+			readme >> resources >> views >> components >> backend.blade.php
+
+		->	extract readme folder
+
+		->	[ backend, fonts, frontend, logo.png, photo, plugin ] move to public folder
+				readme >> public 
+
+		->	app code copy from list.html
+				readme >> public >> backend >> list.html
+
+		->	paste backend.blade.php
+				readme >> resources >> views >> components >> backend.blade.php 
+
+----------------------------------------------------------------------------------------------------
+
+views >> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
