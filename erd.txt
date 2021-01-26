@@ -1,0 +1,35 @@
+Online Bookstore ERD
+---------------------
+
+authors
+	id, name, photo, bio, dob, dod, nationality
+
+genres
+	id, name
+
+language
+	id, name
+
+townships
+	id, name
+
+shippings
+	id, fee, township_id
+
+books
+	id, title, mmtitle, coverphoto, isbn, pages, publishdate, price, discount, summary, annotation, type, file, status, author_id, language_id
+
+book_genre ( pivot table => Many to Many RS )
+	id, book_id, genre_id
+
+
+
+orders
+	id, voucherno, totalamount, totalbook, orderdate, status, deliveryaddress, shipping_id ,user_id
+
+book_order
+	id, qty, book_id, order_id
+
+================================================================================================================
+
+

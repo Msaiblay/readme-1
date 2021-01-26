@@ -38,6 +38,21 @@ all method (get, post, put, patch, delete, options)
 
 ----------------------------------------------------------------------------------------------------
 
+Relationship
+============
+
+1. One to One Relationship
+		hasOne ~ belongsTo
+
+2. One to Many Relationship
+		hasMany ~ belongsTo
+
+3. Many to Many Relationship ( * pivot table )
+		belongsToMany ~ belongsToMany
+
+
+----------------------------------------------------------------------------------------------------
+
 1. Create Laravel Project in htdocs
 	composer create-project laravel/laravel readme
 
@@ -96,9 +111,73 @@ all method (get, post, put, patch, delete, options)
 		->	paste backend.blade.php
 				readme >> resources >> views >> components >> backend.blade.php 
 
+13. Create Table with migration
+		-> php artisan make:migration create_authors_table
+		-> php artisan make:migration create_genres_table
+		-> php artisan make:migration create_languages_table
+		-> php artisan make:migration create_townships_table
+		-> php artisan make:migration create_shippings_table
+		-> php artisan make:migration create_books_table
+		-> php artisan make:migration create_book_genre_table
+		-> php artisan make:migration create_orders_table
+		-> php artisan make:migration create_book_order_table
+
+14. Define column type in migration
+
+15. Run Migration in command line
+		php artisan migrate
+
+		[or]
+
+		php artisan migrate:fresh
+
+
+16. Add Column in existing table using migration ( optional )
+		-> php artisan make:migration add_gender_to_authors_table --table=authors
+		-> define column type in migration
+		-> php artisan migrate
+
+17. Install Carbon Package
+		composer require nesbot/carbon
+
+18. Install Faker Package
+		composer require fakerphp/faker
+
+19. Create Seeder
+		-> php artisan make:seeder TownshipSeeder
+		-> php artisan make:seeder ShippingSeeder
+		-> php artisan make:seeder GenreSeeder
+		-> php artisan make:seeder LanguageSeeder
+
+
+20. Add Data in each seeder
+
+21. Call Seeder class in Database Seeder
+		$this->call(FileName::class);
+
+22. run seeder in command line
+		php artisan db:seed
+
+23. Create model
+		php artisan make:model Author
+		php artisan make:model Genre
+		php artisan make:model Language
+		php artisan make:model Township
+		php artisan make:model Shipping
+		php artisan make:model Book
+		php artisan make:model Order
+
+
+
+
+
 ----------------------------------------------------------------------------------------------------
 
-views >> 
+Eloquent ORM
+--------------
+- Orbject Relational Mapping
+- manage database in OOP methods and properties without having to use SQL Query
+
 
 
 
