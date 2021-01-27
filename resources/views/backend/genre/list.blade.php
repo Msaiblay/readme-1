@@ -31,13 +31,20 @@
 							<div class="d-flex align-items-center">
 								<h4 class="card-title"> List </h4>
 
-								<a class="btn btn-primary btn-round ms-auto" href="">
+								<a class="btn btn-primary btn-round ms-auto" href="{{ route('genre.create') }}">
 									<i class='bx bx-plus' ></i>
 									Add New
 								</a>
 							</div>
 						</div>
 						<div class="card-body">
+							@if(session('successMsg') != NULL )
+							<div class="alert alert-success alert-dismissible fade show" role="alert">
+							  	<strong> ✅ SUCCESS!</strong>
+							  	{{ session('successMsg') }}
+							  	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							</div>
+							@endif
 
 							<div class="table-responsive">
 								<table id="add-row" class="display table table-striped table-hover" >
@@ -45,7 +52,7 @@
 										<tr>
 											<th>#</th>
 											<th>Name</th>
-											<th style="width: 10%">Action</th>
+											<th style="width: 300px">Action</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -55,7 +62,41 @@
 											<th>Action</th>
 										</tr>
 									</tfoot>
-									<tbody></tbody>
+									<tbody>
+										@php $i = 1; @endphp
+										@foreach($genres as $genre)
+											@php
+												$id = $genre->id;
+												$name = $genre->name;
+											@endphp
+
+											<tr>
+												<td> {{ $i++ }} </td>
+												<td> {{ $name }} </td>
+												<td>
+
+													<a href="{{ route('genre.edit',$id) }}" class="btn btn-warning">
+														<span class="btn-label">
+															<i class="icofont-ui-settings"></i>
+														</span>
+														Edit
+													</a>
+
+													<form class="d-inline-block" action="{{ route('genre.destroy',$id) }}" method="POST" onsubmit="return confirm('Are you sure want to delet?')">
+														@csrf
+														@method('DELETE')
+														<button class="btn btn-outline-danger">
+															<span class="btn-label">
+																<i class="icofont-trash"></i>
+															</span>
+															Remove
+														</button>
+													</form>
+
+												</td>
+											</tr>
+										@endforeach
+									</tbody>
 								</table>
 							</div>
 						</div>

@@ -51,7 +51,7 @@ Relationship
 		belongsToMany ~ belongsToMany
 
 
-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
 
 1. Create Laravel Project in htdocs
 	composer create-project laravel/laravel readme
@@ -167,11 +167,28 @@ Relationship
 		php artisan make:model Book
 		php artisan make:model Order
 
+24. create path in command line
+		php artisan storage:link
+
+25. CRUD
+
+------------------------------------------------------------------------------------------------
+
+readme >> storage >> app >> public >> 
+အောက်မှာ 
+author folder နဲ့ 
+bookcover folder ဆောက် 
+bookfile folder ဆောက် 
+
+photo path => /storage/author/authorone.png
+
+			/storage/bookcover/bookone.png
+
+			/storage/bookfile/bookfile.pdf
 
 
 
-
-----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 
 Eloquent ORM
 --------------
@@ -180,8 +197,19 @@ Eloquent ORM
 
 
 
+laravel view မှာ data ထုတ်တာ 
+<?php echo $name; ?>
+{{ $name }}
+{!! $name !!}
 
+------------------------------------------------------------------------------------------------
 
+CSRF
+----
+- Cross Site Request Forgery
+- type of malicious activity performed on behalf of an authenticated user.
+- tokens are managed by the application for each active user session
+- used to verify that the requests are made by an authenticated user.
 
 
 

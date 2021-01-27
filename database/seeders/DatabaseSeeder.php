@@ -16,7 +16,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         // $this->call(TownshipSeeder::class);
-        $this->call(ShippingSeeder::class);
+        // $this->call(ShippingSeeder::class);
+        $this->call(GenreSeeder::class);
+        $this->call(LanguageSeeder::class);
         
 
     }

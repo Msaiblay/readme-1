@@ -303,7 +303,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a href="" class="text-decoration-none">
+							<a href="{{ route('genre.index') }}" class="text-decoration-none">
 								<i class='bx bxs-category' ></i>
 								<p> Genre </p>
 							</a>
