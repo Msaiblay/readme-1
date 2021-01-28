@@ -31,6 +31,8 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="{{ asset('plugin/backend/css/demo.css') }}">
 
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 <body>
 	<div class="wrapper">
@@ -380,8 +382,14 @@
 	<script src="{{ asset('plugin/backend/js/atlantis.js') }}"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="{{ asset('plugin/backend/js/setting-demo2.js') }}"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script >
 		$(document).ready(function() {
+			$('.select2').select2({
+				theme: "classic"
+			});
+
 			$('#basic-datatables').DataTable({
 			});
 

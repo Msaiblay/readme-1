@@ -17,8 +17,11 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(TownshipSeeder::class);
         // $this->call(ShippingSeeder::class);
-        $this->call(GenreSeeder::class);
-        $this->call(LanguageSeeder::class);
+        // $this->call(GenreSeeder::class);
+        // $this->call(LanguageSeeder::class);
+        // $this->call(AuthorSeeder::class);
+        $this->call(BookSeeder::class);
+        
         
 
     }
