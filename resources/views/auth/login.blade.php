@@ -23,7 +23,9 @@
                             <div class="reply-form">
                                 <h4> Login to your Account</h4>
                                 <p>By logging in you agree to the ridiculously long terms that you didn't bother to read </p>
-                                <form action="">
+                                <form action="{{ route('login') }}" method="POST">
+                                    @csrf
+                                    
                                     <div class="row">
                                         <div class="col form-group form-floating">
                                             <input name="email" type="email" class="form-control" placeholder="Your Email*" id="inputEmail">

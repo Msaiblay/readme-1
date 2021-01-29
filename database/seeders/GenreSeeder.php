@@ -17,52 +17,32 @@ class GenreSeeder extends Seeder
     {
         $now = Carbon::now();
 
-        DB::table('genres')->insert([
-            'name' => 'Agricultural',
-            'created_at' => $now,
-            'updated_at' => $now,
-        ]);
+        $genres = array(
+            array(1, 'Fantasy'),
+            array(2, 'Drama'),
+            array(3, 'Accounting'),
+            array(4, 'IT & Programming'),
+            array(5, 'Engineering'),
+            array(6, 'Marketing'),
+            array(7, 'Business'),
+            array(8, 'Romance'),
+            array(9, 'Comic'),
+            array(10, 'Religion'),
+            array(11, 'Novel'),
+            array(12, 'History'),
+            array(13, 'Knowledge'),
+            array(14, 'Translation'),
+            array(15, 'Comedy')
+        );
 
-        DB::table('genres')->insert([
-            'name' => 'Business',
-            'created_at' => $now,
-            'updated_at' => $now,
-        ]);
+        foreach ($genres as $genre) {
+            DB::table('genres')->insert([
+                'name' => $genre[1],
+                'created_at' => $now,
+                'updated_at' => $now,
+            ]);
+        }
 
-        DB::table('genres')->insert([
-            'name' => 'Technical',
-            'created_at' => $now,
-            'updated_at' => $now,
-        ]);
-
-        DB::table('genres')->insert([
-            'name' => 'Novels',
-            'created_at' => $now,
-            'updated_at' => $now,
-        ]);
-
-        DB::table('genres')->insert([
-            'name' => 'History',
-            'created_at' => $now,
-            'updated_at' => $now,
-        ]);
-
-        DB::table('genres')->insert([
-            'name' => 'Comic',
-            'created_at' => $now,
-            'updated_at' => $now,
-        ]);
-
-        DB::table('genres')->insert([
-            'name' => 'Mystery',
-            'created_at' => $now,
-            'updated_at' => $now,
-        ]);
-
-        DB::table('genres')->insert([
-            'name' => 'Religion',
-            'created_at' => $now,
-            'updated_at' => $now,
-        ]);
+        
     }
 }

@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 	<!-- Favicon -->
     <link href="{{ asset('logo.png') }}" rel="icon">
   	<link href="{{ asset('logo.png') }}" rel="apple-touch-icon">
@@ -71,7 +73,7 @@
 
 	      	<nav class="nav-menu d-none d-lg-block">
 	        	<ul>
-	          		<li class="active"><a href="index.html">Home</a></li>
+	          		<li class="active"><a href="{{ route('frontend.index') }}">Home</a></li>
 	          		<li><a href="authors.html"> Author </a></li>
 	          		<li class="drop-down"><a href=""> Genres </a>
 		        		<ul>
@@ -93,12 +95,20 @@
 		          			<li><a href="#"> Downloaded PDF </a></li>
 		          			<li><a href="#"> Change Password </a></li>
 		          			<li><hr class="dropdown-divider"></li>
-		          			<li><a href="#"> Logout </a></li>
+		          			<li>
+		          				<a href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout
+						        </a>
+
+						        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+						            @csrf
+						        </form>
+
+		          			</li>
 		        		</ul>
 	          		</li>
 	          		@endif
 	          		<li class="px-3">
-	          			<a href="authors.html" id="shoppingIcon" class="cart"> 
+	          			<a href="{{ route('frontend.cart') }}" id="shoppingIcon" class="cart"> 
 							<span class="count">0</span>
 	          				<i class='bx bx-cart fs-4'></i> 
 	          			</a>
@@ -127,7 +137,7 @@
 	          		<h2 class="animate__animated animate__fadeInDown"> {{ $data[0][$i]->title }} </h2>
 	          		<p class="animate__animated animate__fadeInUp"> {{ $data[0][$i]->annotation }} </p>
 	          		<p class="fst-italic"> - <span> {{ $data[0][$i]->author->name }} </span> - </p>
-	          		<a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+	          		<a href="{{ route('frontend.book', $data[0][$i]->id) }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
 	        	</div>
 	      	</div>
 
@@ -257,21 +267,23 @@
   	<div id="preloader"></div>
 
   	<!-- Vendor JS Files -->
-  	<script src="../plugin/jquery/jquery.min.js"></script>
+  	<script src="{{ asset('plugin/jquery/jquery.min.js')}}"></script>
   	<!-- Bootstrap -->
-  	<script src="../plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
+  	<script src="{{ asset('plugin/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-  	<script src="../plugin/jquery.easing/jquery.easing.min.js"></script>
-  	<script src="../plugin/owl.carousel/owl.carousel.min.js"></script>
-  	<script src="../plugin/owl.carousel/owlcarousel2thumbs.min.js"></script>
- 	 <script src="../plugin/venobox/venobox.min.js"></script>
-  	<script src="../plugin/isotope-layout/isotope.pkgd.min.js"></script>
-  	<script src="../plugin/aos/aos.js"></script>
+  	<script src="{{ asset('plugin/jquery.easing/jquery.easing.min.js') }}"></script>
+  	<script src="{{ asset('plugin/owl.carousel/owl.carousel.min.js') }}"></script>
+  	<script src="{{ asset('plugin/owl.carousel/owlcarousel2thumbs.min.js') }}"></script>
+ 	 <script src="{{ asset('plugin/venobox/venobox.min.js') }}"></script>
+  	<script src="{{ asset('plugin/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  	<script src="{{ asset('plugin/aos/aos.js') }}"></script>
 
   	<!-- Template Main JS File -->
-  	<script src="../plugin/frontendmain.js"></script>
-  	<script src="../plugin/hover3d.js"></script>
-	<script src="../plugin/bookcover3d.js"></script>
+  	<script src="{{ asset('plugin/frontendmain.js') }}"></script>
+  	<script src="{{ asset('plugin/hover3d.js') }}"></script>
+	<script src="{{ asset('plugin/bookcover3d.js') }}"></script>
+
+	<script src="{{ asset('plugin/cart.js') }}"></script>
 
   	<script>
 		$(function() {

@@ -7,6 +7,11 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Genre;
 use App\Models\Language;
+use App\Models\Shipping;
+use App\Models\Order;
+
+use Carbon\Carbon;
+use Auth;
 
 class FrontendController extends Controller
 {
@@ -25,4 +30,85 @@ class FrontendController extends Controller
     	return view('frontend.index',compact('topbooks', 'newbooks', 'freebooks', 'randombooks', 'genres','authors'));
 
     }
+
+    public function book($id){
+    	$book = Book::find($id);
+
+    	$relatedbooks = Book::where('author_id', $book->author_id)
+    					->where('id', '!=', $book->id)
+    					->inRandomOrder()
+    					->take(3)->get();
+
+    	return view('frontend.book', compact('book', 'relatedbooks'));
+    }
+
+    public function cart(){
+
+    	$shippings = Shipping::all();
+
+    	return view('frontend.cart',compact('shippings'));
+    }
+
+
+    public function storeorder(Request $request){
+    	$carts = json_decode($request->carts);
+    	$deliveryAddress = $request->deliveryAddress;
+    	$shippingId = $request->shippingId;
+    	$totalBook = $request->totalBook;
+    	$totalAmount = $request->totalAmount;
+    	$voucherno = uniqid();
+    	$orderdate = Carbon::now();
+
+    	$status = 0;
+
+    	$auth = Auth::user();
+    	$userid = $auth->id;
+
+
+    	$order = new Order;
+    	$order->voucherno = $voucherno;
+    	$order->totalamount = $totalAmount;
+    	$order->totalbook = $totalBook;
+    	$order->orderdate = $orderdate;
+    	$order->deliveryaddress = $deliveryAddress;
+    	$order->status = $status;
+    	$order->shipping_id = $shippingId;
+    	$order->user_id = $userid;
+    	$order->save();
+
+    	foreach ($carts as $value) {
+            $order->books()->attach($value->id,['qty'=>$value->qty]);
+        }
+
+    	return response()->json([
+            'status' => 'Order Successfully created!'
+        ]);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

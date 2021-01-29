@@ -11,17 +11,24 @@ use App\Http\Controllers\AuthController;
 
 
 // Genre
-Route::resource('/genre',GenreController::class);
-
-Route::resource('/book',BookController::class);
+Route::resource('/genre',GenreController::class)->middleware('auth');
+Route::resource('/book',BookController::class)->middleware('auth');
 
 
 // localhost:8000/genre => GenreController@index
 
 Route::get('/',[FrontendController::class, 'index'])->name('frontend.index');
+Route::get('source/{id}',[FrontendController::class, 'book'])->name('frontend.book');
+Route::get('cart',[FrontendController::class, 'cart'])->name('frontend.cart');
+Route::post('/storeorder',[FrontendController::class, 'storeorder'])->name('/storeorder');
 
 //
 Route::get('login',[AuthController::class, 'loginForm'])->name('login');
+Route::post('login',[AuthController::class, 'login']);
+
+Route::get('register',[AuthController::class, 'registerForm'])->name('register');
+Route::post('register',[AuthController::class, 'register']);
+
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [

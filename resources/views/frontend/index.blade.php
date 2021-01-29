@@ -10,7 +10,7 @@
 	          	<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
 	            	<div class="icon-box">
 	              		<div class="icon">
-	              			<a href="">
+	              			<a href="{{ route('frontend.book', $data[0][$i]->id) }}">
 	              				<img src="{{ $data[0][$i]->coverphoto }}" class="img-fluid mx-auto d-block bookcover">
 	              			</a>
 	              		</div>
@@ -115,7 +115,7 @@
 		              		<img src="{{ $newbook->coverphoto }}" class="img-fluid">
 	          			</div>
 	          			<div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
-	          				<h4 class="ms-0 mst-3"><a href="#"> {{ $newbook->title }} </a></h4>
+	          				<h4 class="ms-0 mst-3"><a href="{{ route('frontend.book', $newbook->id) }}"> {{ $newbook->title }} </a></h4>
 		              		<p class="ms-0"> {{ $newbook->annotation }} </p>
 	          			</div>
 	          		</div>
@@ -144,12 +144,12 @@
 	          	<div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="100">
 		            <div class="member d-flex align-items-start">
 		              	<div class="pic">
-		              		<a href="">
+		              		<a href="{{ route('frontend.book', $randombook->id) }}">
 		              			<img src="{{ $randombook->coverphoto }}" class="img-fluid" alt="">
 		              		</a>
 		              	</div>
 		              	<div class="member-info">
-		                	<a href="">
+		                	<a href="{{ route('frontend.book', $randombook->id) }}">
 		                		<h4> {{ $randombook->title }} </h4>
 		                	</a>
 		                	<a href="">

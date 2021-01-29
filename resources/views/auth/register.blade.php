@@ -1,60 +1,117 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<x-frontend>
 
-        <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+    <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li> Register </li>
+                </ol>
+                <h2>  Register </h2>
             </div>
+        </section>
+        <!-- End Breadcrumbs -->
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+        <!-- ======= Blog Section ======= -->
+        <section id="blog" class="blog">
+            <div class="container">
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-md-10 col-sm-12 col-12">
+                        <div class="blog-comments">
+                            <div class="reply-form">
+                                <h4> Register to your Account</h4>
+                                <p>By logging in you agree to the ridiculously long terms that you didn't bother to read </p>
 
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
+                                @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <x-jet-validation-errors class="mb-4" />
+                                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                @endif
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
+                                <form action="{{ route('register') }}" method="POST">
+                                    @csrf
 
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
+                                    <div class="row">
+                                    	<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    		<div class="form-group form-floating">
+	                                            <input name="name" type="text" class="form-control" placeholder="Your Email*" id="inputName">
+
+	                                            <label for="inputName" class="ps-4 text-muted"> Your Name * </label>
+	                                        </div>
+                                    	</div>
+
+                                    	<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+											<div class="form-group form-floating">
+	                                            <input name="phone" type="number" class="form-control" placeholder="Your Phone*" id="inputPhone">
+
+	                                            <label for="inputPhone" class="ps-4 text-muted"> Your Phone * </label>
+	                                        </div>
+                                    	</div>
+                                        
+                                    </div>
+
+                                    <div class="row">
+
+                                    	<div class="col-12">
+											<div class="form-group form-floating">
+	                                            <input name="email" type="email" class="form-control" placeholder="Your Email*" id="inputEmail">
+
+	                                            <label for="inputEmail" class="ps-4 text-muted"> Your Email * </label>
+	                                        </div>
+                                    	</div>
+                                        
+                                    </div>
+                                    
+                                    <div class="row">
+                                    	<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+	                                        <div class="col form-group form-floating">
+	                                            <input name="password" type="password" class="form-control" placeholder="Password*" id="inputPassword">
+
+	                                            <label for="inputPassword" class="ps-4 text-muted"> Password * </label>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+	                                        <div class="col form-group form-floating">
+	                                            <input name="password_confirmation" type="password" class="form-control" placeholder="Confirm Password*" id="inputconfirmPassword">
+
+	                                            <label for="inputconfirmPassword" class="ps-4 text-muted">Confirm Password * </label>
+	                                        </div>
+	                                    </div>
+                                        
+                                    </div>
+
+
+                                    <div class="row">
+
+                                    	<div class="col-12">
+											<div class="form-group form-floating">
+	                                            <textarea class="form-control" placeholder="Leave a comment here" id="inputAddress" style="height: 70px" name="address"></textarea>
+								  				<label for="inputAddress"> Address</label>
+	                                        </div>
+                                    	</div>
+                                        
+                                    </div>
+                              
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <button type="submit" class="btn btn-primary"> Sign Up </button>
+                                    </div>
+                                </form>
+
                             </div>
-                        </div>
-                    </x-jet-label>
+                      </div>
+
+                    </div>
+
                 </div>
-            @endif
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        </section>
+        <!-- End Blog Section -->
+
+
+</x-frontend>

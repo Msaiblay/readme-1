@@ -22,7 +22,7 @@ class Order extends Model
     }
 
     public function books(){
-    	return $this->belongsToMany('App\Models\Book','book_order', 'book_id', 'order_id')
+    	return $this->belongsToMany('App\Models\Book','book_order', 'order_id', 'book_id')
     				->withPivot('qty');
     }
 }
