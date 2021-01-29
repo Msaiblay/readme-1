@@ -6,6 +6,8 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\AuthController;
 
 
 // Genre
@@ -16,8 +18,10 @@ Route::resource('/book',BookController::class);
 
 // localhost:8000/genre => GenreController@index
 
-Route::get('/',FrontendController::class);
+Route::get('/',[FrontendController::class, 'index'])->name('frontend.index');
 
+//
+Route::get('login',[AuthController::class, 'loginForm'])->name('login');
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [

@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder
         // $this->call(GenreSeeder::class);
         // $this->call(LanguageSeeder::class);
         // $this->call(AuthorSeeder::class);
-        $this->call(BookSeeder::class);
+        // $this->call(BookSeeder::class);
+        
+        // $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
         
         
 
